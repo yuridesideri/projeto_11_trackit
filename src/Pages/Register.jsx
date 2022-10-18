@@ -6,22 +6,22 @@ import GraphicLogo from '../assets/TrackitGD.svg';
 export default function Register(props){
 
     const navigate = useNavigate();
-    
+
     function handleSubmit(e) {
-        e.preventDefault();
+        
         console.log(e,e.target,e.target[0]);
         
     }
 
     return (
         <StyledRegister>
-            <img src={GraphicLogo} alt="" />
+            <img src={GraphicLogo} alt="Trackit Graphical Logo" />
             <form onSubmit={handleSubmit}>
-                <input placeholder="email" type="email" name="register_email" id="userEmail" />
-                <input placeholder="senha" type="password" name="register_passowrd" id="userPassword" />
-                <input placeholder="nome" type="text" />
-                <input placeholder="foto" type="url" name="register_url" id="" />
-                <button type='submit' onClick={() => navigate('/today')}>Cadastrar</button>
+                <input placeholder="email" type="email" name="register_email" id="userEmail" required/>
+                <input placeholder="senha" type="password" name="register_passowrd" id="userPassword" required />
+                <input placeholder="nome" type="text" name="register_name" id="userName" required/>
+                <input placeholder="foto" type="url" name="register_url" id="userPic" required/>
+                <button name='register_button'>Cadastrar</button>
             </form>
             <p onClick={() => navigate("/")}>Já tem uma conta? Faça login!</p>
         </StyledRegister>

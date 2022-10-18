@@ -2,6 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 
 const GlobalStyle = createGlobalStyle`
+
+
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -13,8 +15,8 @@ const GlobalStyle = createGlobalStyle`
     table, caption, tbody, tfoot, thead, tr, th, td,
     article, aside, canvas, details, embed, 
     figure, figcaption, footer, header, hgroup, 
-    menu, nav, output, ruby, section, summary,
-    time, mark, audio, video {
+    menu, nav, output, ruby, section, summary, input,
+    time, mark, audio, video, button, ::placeholder{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -25,6 +27,8 @@ const GlobalStyle = createGlobalStyle`
         font-style: inherit;
         vertical-align: baseline;
         font-size: 100%;
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 400;
     }
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 
@@ -49,6 +53,28 @@ const GlobalStyle = createGlobalStyle`
     table {
         border-collapse: collapse;
         border-spacing: 0;
+    }
+    input{
+        text-indent: 7px;
+        width: 303px;
+        height: 40px;
+        font-size: 19.976px;
+        border: 1px solid #D5D5D5;
+        border-radius: 5px;
+    }
+    button{
+        background-color: rgba(82, 182, 255, 1);
+        color: white;
+    }
+    input::placeholder{
+        color: rgba(219, 219, 219, 1)
+    }
+    input:focus{
+        outline: 1px solid rgba(82, 182, 255, 1);;
+    }
+    input:invalid{
+        color: #e36262;
+        caret-color: black;
     }
 `
 

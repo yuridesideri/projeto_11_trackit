@@ -30,14 +30,11 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Lexend Deca', sans-serif;
         font-weight: 400;
     }
-    /* HTML5 display-role reset for older browsers */
-    article, aside, details, figcaption, figure, 
-    footer, header, hgroup, menu, nav, section {
-        display: block;
-    }
     body {
         line-height: 1;
         font-size: 1rem;
+        width: 100vw;
+        height: 100vh;
     }
     ol, ul {
         list-style: none;
@@ -79,6 +76,10 @@ const GlobalStyle = createGlobalStyle`
     input:disabled{
         background-color: rgba(212, 212, 212, 1) !important;
     }
+    div,section,header,footer,nav{
+        width: inherit;
+    }
+    
 `
 
 export default GlobalStyle;

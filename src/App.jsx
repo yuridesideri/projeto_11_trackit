@@ -5,22 +5,28 @@ import History from "./Pages/History.jsx";
 import Habits from "./Pages/Habits.jsx";
 import Today from "./Pages/Today.jsx";
 import Error from "./Pages/Error.jsx"
+import UserAuthContext from "./context/userAuthContext.jsx";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [userData, setUserData] = useState(null);
 
-  
+  useEffect(() => console.log(userData), [userData]);
+
   return (
-    <div className="App">  
-      <BrowserRouter>
-        <Routes>
-            <Route path='/' element={<LogIn />} /> 
-            <Route path='history' element={<History />} />
-            <Route path='register' element={<Register />} />
-            <Route path='habits' element={<Habits />} />
-            <Route path='today' element={<Today />} />
-            <Route path='*' element={<Error />} />
-        </Routes>
-      </BrowserRouter>
+    <div className="App"> 
+      <UserAuthContext data={userData}>
+        <BrowserRouter>
+          <Routes>
+              <Route path='/' element={<LogIn setUserData={setUserData} />} /> 
+              <Route path='history' element={<History />} />
+              <Route path='register' element={<Register />} />
+              <Route path='habits' element={<Habits />} />
+              <Route path='today' element={<Today />} />
+              <Route path='*' element={<Error />} />
+          </Routes>
+        </BrowserRouter>
+      </UserAuthContext>
     </div>
   )
 }

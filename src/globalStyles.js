@@ -76,6 +76,9 @@ const GlobalStyle = createGlobalStyle`
         color: #e36262;
         caret-color: black;
     }
+    input:disabled{
+        background-color: rgba(212, 212, 212, 1) !important;
+    }
 `
 
 export default GlobalStyle;

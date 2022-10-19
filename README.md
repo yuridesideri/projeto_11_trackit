@@ -1,0 +1,1 @@
+Bibliotecas utilizadas: React, dayjs, react-loader-spinner, react-circular-progressbar, styledcomponents, react-router-dom, axios

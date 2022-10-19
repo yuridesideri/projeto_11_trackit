@@ -1,27 +1,50 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import GraphicLogo from '../assets/TrackitGD.svg';
+import { ThreeDots } from "react-loader-spinner";
+import axios from "axios";
 
 
 export default function Register(props){
-
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     function handleSubmit(e) {
-        
-        console.log(e,e.target,e.target[0]);
-        
+        e.preventDefault();
+        setIsLoading(!isLoading);
+        axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up', {
+            email: e.target[0].value,
+            name: e.target[2].value,
+            image: e.target[3].value,
+            password: e.target[1].value
+        })
+        .then(resp => navigate("/"))
+        .catch(err => {
+            setIsLoading(false);
+            alert('Dados Inválidos');
+        })
     }
 
     return (
         <StyledRegister>
             <img src={GraphicLogo} alt="Trackit Graphical Logo" />
             <form onSubmit={handleSubmit}>
-                <input placeholder="email" type="email" name="register_email" id="userEmail" required/>
-                <input placeholder="senha" type="password" name="register_passowrd" id="userPassword" required />
-                <input placeholder="nome" type="text" name="register_name" id="userName" required/>
-                <input placeholder="foto" type="url" name="register_url" id="userPic" required/>
-                <button name='register_button'>Cadastrar</button>
+                <input placeholder="email" type="email" name="register_email" id="userEmail" required disabled={isLoading}/>
+                <input placeholder="senha" type="password" name="register_passowrd" id="userPassword" required disabled={isLoading} />
+                <input placeholder="nome" type="text" name="register_name" id="userName" required disabled={isLoading}/>
+                <input placeholder="foto" type="url" name="register_url" id="userPic" required disabled={isLoading}/>
+                <button name='register_button' required disabled={isLoading}>{isLoading ? 
+                <ThreeDots
+                    height = "60"
+                    width = "60"
+                    radius = "9"
+                    color = 'white'
+                    ariaLabel = 'three-dots-loading'     
+                    wrapperStyle = {{}}
+                    wrapperClassName="loading-animation"
+                /> :
+                "Registrar"}</button>
             </form>
             <p onClick={() => navigate("/")}>Já tem uma conta? Faça login!</p>
         </StyledRegister>

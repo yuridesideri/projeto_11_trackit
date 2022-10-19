@@ -1,24 +1,50 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import GraphicLogo from '../assets/TrackitGD.svg';
+import { ThreeDots } from "react-loader-spinner";
+import axios from "axios";
 
 export default function LogIn(props){
 
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const {setUserData} = props;
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(e,e.target,e.target[0]);
-        
+        setIsLoading(!isLoading);
+        axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login', {
+            email: e.target[0].value,
+            password: e.target[1].value
+        })
+        .then(resp => {
+            setUserData(resp.data);
+            navigate("/today");
+        })
+        .catch(err => {
+            setIsLoading(false);
+            alert('Dados Inválidos');
+        })
     }
      
     return (
         <StyledLogIn>
             <img src={GraphicLogo} alt="Habit tracker logo" />
             <form onSubmit={handleSubmit}>
-                <input placeholder="email" type="email" name="user_email" id="userEmail" required/>
-                <input placeholder="senha" type="password" name="user_passoword" id="userPassword" required/>
-                <button name="LogInButton">Entrar</button>
+                <input placeholder="email" type="email" name="user_email" id="userEmail" required disabled={isLoading} />
+                <input placeholder="senha" type="password" name="user_passoword" id="userPassword" required disabled={isLoading} />
+                <button name='LogInButton' disabled={isLoading}>{isLoading ? 
+                <ThreeDots
+                    height = "60"
+                    width = "60"
+                    radius = "9"
+                    color = 'white'
+                    ariaLabel = 'three-dots-loading'     
+                    wrapperStyle = {{}}
+                    wrapperClassName="loading-animation"
+                /> :
+                "Entrar"}</button>
             </form>
             <p onClick={() => navigate('/register')}>Não tem uma conta? Cadastre-se!</p>        
         </StyledLogIn>

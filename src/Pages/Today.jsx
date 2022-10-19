@@ -1,17 +1,16 @@
-import { useContext } from "react";
+import dayjs from "../utils/updatedWeekdays";
 import styled from "styled-components";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
-import { userDataContext } from "../context/userAuthContext";
 
 export default function Today(props){
 
-    const userData = useContext(userDataContext);
+   
     
     return (
         <StyledToday>
             <Header />
-            <h1>Something</h1>
+            <h1>{dayjs().locale('pt-br').format('DD/MM/dddd')}</h1>
             <Footer />
         </StyledToday>
     );

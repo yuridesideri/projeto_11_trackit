@@ -6,12 +6,10 @@ import { userDataContext } from "../context/userAuthContext.jsx";
 export default function Header(props){
 
     const userData = useContext(userDataContext);
-    console.table(userData);
     return (
         <StyledHeader>
             <img name="logo-img"  src={Logo} alt="Logo TrackIt" />
             <img name="user-img" src={userData.image} alt="User Profile" />
-
         </StyledHeader>
     );
 }

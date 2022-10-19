@@ -6,12 +6,11 @@ import Habits from "./Pages/Habits.jsx";
 import Today from "./Pages/Today.jsx";
 import Error from "./Pages/Error.jsx"
 import UserAuthContext from "./context/userAuthContext.jsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const [userData, setUserData] = useState(null);
 
-  useEffect(() => console.log(userData), [userData]);
 
   return (
     <div className="App"> 

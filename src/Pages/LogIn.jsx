@@ -32,9 +32,9 @@ export default function LogIn(props){
         <StyledLogIn>
             <img src={GraphicLogo} alt="Habit tracker logo" />
             <form onSubmit={handleSubmit}>
-                <input placeholder="email" type="email" name="user_email" id="userEmail" required disabled={isLoading} />
-                <input placeholder="senha" type="password" name="user_passoword" id="userPassword" required disabled={isLoading} />
-                <button name='LogInButton' disabled={isLoading}>
+                <input data-identifier="input-email" placeholder="email" type="email" name="user_email" id="userEmail" required disabled={isLoading} />
+                <input data-identifier="input-password" placeholder="senha" type="password" name="user_passoword" id="userPassword" required disabled={isLoading} />
+                <button data-identifier="login-btn" name='LogInButton' disabled={isLoading}>
                 {
                 isLoading ? 
                 <ThreeDots
@@ -48,7 +48,7 @@ export default function LogIn(props){
                 /> :
                 "Entrar"}</button>
             </form>
-            <p onClick={() => navigate('/register')}>Não tem uma conta? Cadastre-se!</p>        
+            <p ata-identifier="sign-up-action" onClick={() => navigate('/register')}>Não tem uma conta? Cadastre-se!</p>        
         </StyledLogIn>
     );
 }

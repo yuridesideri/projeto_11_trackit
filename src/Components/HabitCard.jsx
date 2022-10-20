@@ -40,6 +40,7 @@ export default function HabitCard(props){
                 {String(habit.highestSequence)} dias</strong>
                 </h3>
             <button 
+            data-identifier="done-habit-btn"
             onClick={handleCheck} 
             className="check-button"
             style={{backgroundColor: isMarked ? 'rgba(143, 197, 73, 1)' : 'rgba(231, 231, 231, 1)'}}>

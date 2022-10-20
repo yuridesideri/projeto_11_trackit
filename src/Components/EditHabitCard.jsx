@@ -71,10 +71,11 @@ function AddCard (props) {
 
     return (<StyledAddCard>
         <form onSubmit={handleSubmit}>
-            <input type="text" />
+            <input data-identifier="input-habit-name" type="text" />
             <div className="days-buttons">
                 {days.map((letter, ind) => (
                 <button 
+                data-identifier="week-day-btn"
                 type="button"
                 key={`add${ind}`} 
                 style={{backgroundColor: `${selectedDays.includes(ind)? colors[1] : colors[0]}`, 
@@ -87,8 +88,8 @@ function AddCard (props) {
                 </button>))} 
             </div>
             <div className="actions">
-                <p onClick={() => setShowNewCard(false)}>Cancelar</p>
-                <button onClick={() => setIsLoading(true)} type="submit">
+                <p data-identifier="cancel-habit-create-btn" onClick={() => setShowNewCard(false)}>Cancelar</p>
+                <button data-identifier="save-habit-create-btn" onClick={() => setIsLoading(true)} type="submit">
                 { isLoading ? 
                     <ThreeDots
                     height = "40"
@@ -157,8 +158,8 @@ function RemoveCard (props) {
     
     return (
     <StyledRemoveCard>
-        <img onClick={() => handleRemove()} src={TrashCan} alt='Remove habit icon' className="icon" />
-        <h1>{habit.name}</h1>
+        <img data-identifier="delete-habit-btn" onClick={() => handleRemove()} src={TrashCan} alt='Remove habit icon' className="icon" />
+        <h1 data-identifier="habit-name">{habit.name}</h1>
         <div className="days">
             {days.map((letter, ind) => 
             <div

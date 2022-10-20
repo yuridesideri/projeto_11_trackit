@@ -30,11 +30,11 @@ export default function Register(props){
         <StyledRegister>
             <img src={GraphicLogo} alt="Trackit Graphical Logo" />
             <form onSubmit={handleSubmit}>
-                <input placeholder="email" type="email" name="register_email" id="userEmail" required disabled={isLoading}/>
-                <input placeholder="senha" type="password" name="register_passowrd" id="userPassword" required disabled={isLoading} />
-                <input placeholder="nome" type="text" name="register_name" id="userName" required disabled={isLoading}/>
-                <input placeholder="foto" type="url" name="register_url" id="userPic" required disabled={isLoading}/>
-                <button name='register_button' required disabled={isLoading}>{isLoading ? 
+                <input data-identifier="input-email" placeholder="email" type="email" name="register_email" id="userEmail" required disabled={isLoading}/>
+                <input data-identifier="input-password" placeholder="senha" type="password" name="register_passowrd" id="userPassword" required disabled={isLoading} />
+                <input data-identifier="input-name" placeholder="nome" type="text" name="register_name" id="userName" required disabled={isLoading}/>
+                <input ata-identifier="input-photo" placeholder="foto" type="url" name="register_url" id="userPic" required disabled={isLoading}/>
+                <button data-identifier="back-to-login-action" name='register_button' required disabled={isLoading}>{isLoading ? 
                 <ThreeDots
                     height = "60"
                     width = "60"

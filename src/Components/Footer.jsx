@@ -13,7 +13,7 @@ export default function Footer(props){
     
     return (
         <StyledFooter>
-            <p onClick={() => navigate('/habits')}>Hábitos</p>
+            <p data-identifier="habit-page-action" onClick={() => navigate('/habits')}>Hábitos</p>
             <div className="today-button" onClick={() => navigate('/today')}>
                 <p>Hoje</p>
                 <CircularProgressbar 
@@ -25,7 +25,7 @@ export default function Footer(props){
                 
                 backgroundPadding={"20px"} />
             </div>
-            <p onClick={() => navigate('/history')}>Histórico</p>
+            <p data-identifier="historic-page-action" onClick={() => navigate('/history')}>Histórico</p>
         </StyledFooter>
     );
 }

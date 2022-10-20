@@ -9,7 +9,7 @@ export default function Header(props){
     return (
         <StyledHeader>
             <img name="logo-img"  src={Logo} alt="Logo TrackIt" />
-            <img name="user-img" src={userData.image} alt="User Profile" />
+            <img data-identifier="avatar" name="user-img" src={userData.image} alt="User Profile" />
         </StyledHeader>
     );
 }

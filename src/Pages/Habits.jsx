@@ -36,13 +36,13 @@ export default function Habits(props){
             <Header />
                 <div className="body-header">
                     <h1>Meus hábitos</h1>
-                    <button onClick={() => setShowNewCard(oldState => !oldState)}> <p>+</p> </button>
+                    <button data-identifier="create-habit-btn" onClick={() => setShowNewCard(oldState => !oldState)}> <p>+</p> </button>
                 </div>
                 {showNewCard && <EditHabitCard setHabitsObject={setHabitsObject} setShowNewCard={setShowNewCard} type={'add'} /> }
                 {
                 habitsObject && habitsObject.length !== 0 ? 
                     habitsObject.map(habit => <EditHabitCard key={habit.id} setHabitsObject={setHabitsObject} type={'remove'} habit={habit} />) :
-                    <p className="encoraging-sentence">Você não tem nenhum hábito cadastrado ainda. 
+                    <p data-identifier="no-habit-message" className="encoraging-sentence">Você não tem nenhum hábito cadastrado ainda. 
                     Adicione um hábito para começar a trackear!</p>
                 }
             <Footer />

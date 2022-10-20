@@ -40,7 +40,7 @@ export default function Today(props){
     return (
         <StyledToday>
             <Header />
-            <div className="summary">
+            <div data-identifier="today-infos" className="summary">
                 <h1>{date}</h1>
                 <Summary habitsObject={habitsObject}/>
             </div>

@@ -9,6 +9,7 @@ import EditHabitCard from "../Components/EditHabitCard.jsx";
 
 export default function Habits(props){
 
+    const {setUserData} = props;
     const userData = useContext(userDataContext);
     const [habitsObject, setHabitsObject] = useState(null);
     const [showNewCard, setShowNewCard] = useState(false);
@@ -18,6 +19,17 @@ export default function Habits(props){
         .then(resp => setHabitsObject(resp.data))
         .catch(err => alert('Could not load User Habits'));
     },[userData]);
+
+    useEffect(() => {
+        axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today', {headers: {Authorization: `Bearer ${userData.token}`}})
+        .then(res => {
+            const habitsObject = res.data
+            const completed = habitsObject.reduce((counter, habit) => habit.done? counter+=1 : counter, 0);
+            const getPercentage = Math.round((completed/habitsObject.length)* 100);
+            setUserData(oldState => {return {...oldState, percentage: getPercentage,}});
+        })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [habitsObject]);
 
     return (
         <StyledHabits>

@@ -16,19 +16,11 @@ export default function Footer(props){
             <p onClick={() => navigate('/habits')}>Hábitos</p>
             <div className="today-button" onClick={() => navigate('/today')}>
                 <p>Hoje</p>
-                    {/* <CircularProgressbar
-                    value={percentage}
-                    text={`${percentage}%`}
-                    styles={buildStyles({
-                    strokeLinecap: "butt"
-                    })}
-                /> */}
                 <CircularProgressbar 
-                value={percentage} 
+                value={isNaN(percentage) ? 0 : percentage} 
                 strokeWidth={"10"}
                 styles={
-                    {path: {stroke:  'rgb(255, 255, 255)', strokeLinecap: 'butt'},
-                    trail:{ strokeLinecap: 'butt'}}
+                    {path: {stroke:  'rgb(255, 255, 255)'}, trail: {stroke: "rgba(0,0,0,0)"}}
                 }
                 
                 backgroundPadding={"20px"} />

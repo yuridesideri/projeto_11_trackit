@@ -19,8 +19,6 @@ export default function Habits(props){
         .catch(err => alert('Could not load User Habits'));
     },[userData]);
 
-    useEffect(() => console.log(habitsObject),[habitsObject]);
-
     return (
         <StyledHabits>
             <Header />

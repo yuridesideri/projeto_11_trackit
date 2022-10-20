@@ -6,7 +6,7 @@ export default function History(props){
 
     
 
-    return (
+return (
         <StyledHistory>
             <Header />
             <div className="main-header">

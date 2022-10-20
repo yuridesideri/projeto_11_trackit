@@ -22,7 +22,6 @@ export default function HabitCard(props){
             {headers : {Authorization: `Bearer ${token}`}}).then(response => {setHabitsObject(response.data); setIsMarked(!habit.done);})
         })
         .catch(err => {
-            console.log(err.response);
             alert("Oh no, we couldn't attend your request!");
         })
         

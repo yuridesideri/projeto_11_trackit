@@ -46,12 +46,10 @@ function AddCard (props) {
     const [isLoading, setIsLoading] = useState(false);
     const {token} = useContext(userDataContext);
 
-    useEffect(() => console.log(selectedDays),[selectedDays])
 
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log(e);
         const inputValue = e.target[0].value;
         const formArray = Array.from(e.target);
         formArray.forEach(el => el.setAttribute('disabled','true'));
@@ -64,7 +62,6 @@ function AddCard (props) {
             setIsLoading(false);  
             })
         .catch(err => {
-            console.log(err)
             alert('Dados Inválidos');
             formArray.forEach(el => el.removeAttribute('disabled'));
             setIsLoading(false);
@@ -154,7 +151,6 @@ function RemoveCard (props) {
             .then(resp => setHabitsObject(resp.data));
         })
         .catch(err => {
-            console.log(err)
             alert('Pedido não concluído');
         })
     }

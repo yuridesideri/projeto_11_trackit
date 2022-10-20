@@ -9,11 +9,12 @@ export default function Summary(props){
         if(habitsObject){
             if(habitsObject.length === 0)
             {
-                return "Nenhum hábito criado";
+                return "Nenhum hábito para hoje";
             }
             else{
                 const count = habitsObject.reduce((counter, habit) => habit.done ? counter+=1 : counter, 0);
                 if (count === 0){
+                    console.log(count);
                     return "Nenhum hábito concluído ainda";
                 }
                 else{

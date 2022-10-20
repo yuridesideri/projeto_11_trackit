@@ -6,6 +6,7 @@ import Summary from "../Components/Summary";
 import { useContext, useEffect, useState } from "react";
 import { userDataContext } from "../context/userAuthContext";
 import axios from "axios";
+import HabitCard from "../Components/HabitCard";
 
 export default function Today(props){
 
@@ -16,7 +17,8 @@ export default function Today(props){
     
 
     useEffect(() => {
-        axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", {headers : {Authorization: `Bearer ${token}`}})
+        axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", 
+        {headers : {Authorization: `Bearer ${token}`}})
         .then(resp => setHabitsObject(resp.data))
         .catch(err => alert('Could not load User Habits'));
     },[token])
@@ -29,6 +31,9 @@ export default function Today(props){
                 <h1>{date}</h1>
                 <Summary habitsObject={habitsObject}/>
             </div>
+            <div className="habit-cards">
+                {habitsObject && habitsObject.map((habit, num) => <HabitCard key={habit.id + num} habit={habit}/> )}
+            </div>
             <Footer />
         </StyledToday>
     );
@@ -36,16 +41,20 @@ export default function Today(props){
 
 const StyledToday = styled.div`
     background-color: #E5E5E5;
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding: 70px 18px 70px 18px;
     height: 100vh;
     width: 100%;
     flex-direction: column;
     justify-content: flex-start;
+    .habit-cards{
+        flex-direction: column;
+        margin-top: 28px;
+    }
     .summary{
         flex-direction: column;
         align-items: flex-start;
         h1{
+            margin-top: 28px;
             color: #126BA5;
             font-size: 1.5rem;
         }

@@ -34,7 +34,9 @@ export default function LogIn(props){
             <form onSubmit={handleSubmit}>
                 <input placeholder="email" type="email" name="user_email" id="userEmail" required disabled={isLoading} />
                 <input placeholder="senha" type="password" name="user_passoword" id="userPassword" required disabled={isLoading} />
-                <button name='LogInButton' disabled={isLoading}>{isLoading ? 
+                <button name='LogInButton' disabled={isLoading}>
+                {
+                isLoading ? 
                 <ThreeDots
                     height = "60"
                     width = "60"

@@ -16,8 +16,11 @@ export default function History(props){
     );
 }
 
+
 const StyledHistory = styled.div`
     background-color: #E5E5E5;
+    padding-top: 70px;
+    padding-bottom: 70px;
     height: 100vh;
     flex-direction: column;
 `

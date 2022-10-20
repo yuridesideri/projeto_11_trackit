@@ -1,6 +1,6 @@
 import dayjs from "../utils/updatedWeekdays";
 import styled from "styled-components";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import { userDataContext } from "../context/userAuthContext";

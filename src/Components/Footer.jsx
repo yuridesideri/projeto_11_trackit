@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import {CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import { useContext, useEffect, useState } from "react";
+import {CircularProgressbar } from 'react-circular-progressbar';
+import { useContext } from "react";
 import { userDataContext } from "../context/userAuthContext";
 
 

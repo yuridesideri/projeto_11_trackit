@@ -33,6 +33,7 @@ export default function Today(props){
             const getPercentage = Math.round((completed/habitsObject.length)* 100);
             setUserData(oldState => {return {...oldState, percentage: getPercentage,}});
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [habitsObject]);
 
 

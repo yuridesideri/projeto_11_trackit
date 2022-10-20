@@ -42,7 +42,7 @@ export default function Today(props){
 const StyledToday = styled.div`
     background-color: #E5E5E5;
     padding: 70px 18px 70px 18px;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     flex-direction: column;
     justify-content: flex-start;

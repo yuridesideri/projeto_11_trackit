@@ -30,7 +30,7 @@ export default function HabitCard(props){
 
     return (
         <StyledHabitCard>
-            <h1 className="title">Ler 1 capítulo de livro</h1>
+            <h1 className="title">{habit.name}</h1>
             <h3>Sequência atual: 
             <strong style={{color: isMarked ? 'rgba(143, 197, 73, 1)' : 'rgba(102, 102, 102, 1)'}}>
              {String(habit.currentSequence)} dias</strong>

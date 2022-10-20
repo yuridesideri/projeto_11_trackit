@@ -29,6 +29,7 @@ const StyledFooter = styled.div`
     background-color: white;
     color: rgba(82, 182, 255, 1);
     font-size: 1.125rem;
+    z-index: 2;
     .today-button{
         width: 91px;
         height: 91px;

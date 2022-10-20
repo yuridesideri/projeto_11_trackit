@@ -34,7 +34,6 @@ const GlobalStyle = createGlobalStyle`
         line-height: 1;
         font-size: 1rem;
         width: 100vw;
-        height: 100vh;
     }
     ol, ul {
         list-style: none;

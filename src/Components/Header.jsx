@@ -24,6 +24,8 @@ const StyledHeader = styled.div`
     height: 70px;
     padding-left: 16px;
     padding-right: 16px;
+    z-index: 2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     img[name="user-img"]{
         width: 51px;
         height: 51px;

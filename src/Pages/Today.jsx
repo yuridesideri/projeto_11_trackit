@@ -9,9 +9,10 @@ import axios from "axios";
 import HabitCard from "../Components/HabitCard";
 
 export default function Today(props){
-
-    const [habitsObject, setHabitsObject] = useState(null);
+    const {setUserData} = props;
     const {token} = useContext(userDataContext);
+    const [habitsObject, setHabitsObject] = useState(null);
+
 
     const date = dayjs().locale('pt-br').format('dddd, DD/MM');
     
@@ -24,6 +25,17 @@ export default function Today(props){
     },[token])
 
 
+    useEffect( () => {
+        axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today', {headers: {Authorization: `Bearer ${token}`}})
+        .then(res => {
+            const habitsObject = res.data
+            const completed = habitsObject.reduce((counter, habit) => habit.done? counter+=1 : counter, 0);
+            const getPercentage = Math.round((completed/habitsObject.length)* 100);
+            setUserData(oldState => {return {...oldState, percentage: getPercentage,}});
+        })
+    }, [habitsObject]);
+
+
     return (
         <StyledToday>
             <Header />
@@ -32,9 +44,9 @@ export default function Today(props){
                 <Summary habitsObject={habitsObject}/>
             </div>
             <div className="habit-cards">
-                {habitsObject && habitsObject.map((habit, num) => <HabitCard key={habit.id + num} habit={habit}/> )}
+                {habitsObject && habitsObject.map((habit, num) => <HabitCard key={habit.id + num} setHabitsObject={setHabitsObject} habit={habit}/> )}
             </div>
-            <Footer />
+            <Footer habitsObject={habitsObject}/>
         </StyledToday>
     );
 }

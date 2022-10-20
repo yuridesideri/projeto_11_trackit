@@ -21,7 +21,7 @@ function App() {
               <Route path='history' element={<History />} />
               <Route path='register' element={<Register />} />
               <Route path='habits' element={<Habits />} />
-              <Route path='today' element={<Today />} />
+              <Route path='today' element={<Today setUserData={setUserData}/>} />
               <Route path='*' element={<Error />} />
           </Routes>
         </BrowserRouter>

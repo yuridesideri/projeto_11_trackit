@@ -1,25 +1,34 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { userDataContext } from "../context/userAuthContext";
 
 export default function Summary(props){
 
     const {habitsObject} = props;
     const [coloredStatus, setColoredStatus] = useState(false);
+    const {percentage} = useContext(userDataContext);
 
-    function handleSummary (){
+    useEffect(()=> {
+        if( percentage && percentage !== 0){
+            setColoredStatus(true);
+        }
+        else{
+            setColoredStatus(false);
+        }
+        }
+    ,[percentage])
+
+    function handleSummary (habitsObject){
         if(habitsObject){
             if(habitsObject.length === 0)
             {
                 return "Nenhum hábito para hoje";
             }
             else{
-                const count = habitsObject.reduce((counter, habit) => habit.done ? counter+=1 : counter, 0);
-                if (count === 0){
-                    console.log(count);
+                if (percentage === 0){
                     return "Nenhum hábito concluído ainda";
                 }
                 else{
-                    setColoredStatus(true)
-                    return `${Math.ceil((count/habitsObject.length) * 100)}% dos hábitos concluídos`;
+                    return `${percentage}% dos hábitos concluídos`;
                 }
             }
         }
@@ -30,7 +39,7 @@ export default function Summary(props){
 
     return (
         <h2 style={{color: coloredStatus ? 'rgba(143, 197, 73, 1)' : "rgba(186, 186, 186, 1)"}}>
-            {handleSummary()}
+            {handleSummary(habitsObject)}
         </h2>
     );
 }

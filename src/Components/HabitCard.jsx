@@ -6,7 +6,7 @@ import { userDataContext } from "../context/userAuthContext";
 
 export default function HabitCard(props){
 
-    const {habit} = props;
+    const {habit, setHabitsObject} = props;
     const [isMarked, setIsMarked] = useState(habit.done);
     const {token} = useContext(userDataContext);
 
@@ -14,11 +14,12 @@ export default function HabitCard(props){
 
         e.target.setAttribute('disabled','');
 
-        await axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habit.id}/${isMarked ? 'uncheck' : 'checked'}`, 
-        undefined,
+        await axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habit.id}/${isMarked ? 'uncheck' : 'check'}`, 
+        {},
         {headers : {Authorization: `Bearer ${token}`}})
         .then(resp => {
-            setIsMarked(!isMarked)
+            axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", 
+            {headers : {Authorization: `Bearer ${token}`}}).then(response => {setHabitsObject(response.data); setIsMarked(!habit.done);})
         })
         .catch(err => {
             console.log(err.response);

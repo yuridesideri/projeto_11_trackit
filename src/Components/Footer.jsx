@@ -1,18 +1,37 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import ButtonSvgStyle from "../assets/ButtonSvgStyle.svg"
+
+import {CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { useContext, useEffect, useState } from "react";
+import { userDataContext } from "../context/userAuthContext";
 
 
 export default function Footer(props){
+    const { percentage } = useContext(userDataContext);
 
     const navigate = useNavigate();
-
+    
     return (
         <StyledFooter>
             <p onClick={() => navigate('/habits')}>Hábitos</p>
             <div className="today-button" onClick={() => navigate('/today')}>
                 <p>Hoje</p>
-                <img src={ButtonSvgStyle} alt="Today Progress Bar" />
+                    {/* <CircularProgressbar
+                    value={percentage}
+                    text={`${percentage}%`}
+                    styles={buildStyles({
+                    strokeLinecap: "butt"
+                    })}
+                /> */}
+                <CircularProgressbar 
+                value={percentage} 
+                strokeWidth={"10"}
+                styles={
+                    {path: {stroke:  'rgb(255, 255, 255)', strokeLinecap: 'butt'},
+                    trail:{ strokeLinecap: 'butt'}}
+                }
+                
+                backgroundPadding={"20px"} />
             </div>
             <p onClick={() => navigate('/history')}>Histórico</p>
         </StyledFooter>
@@ -31,6 +50,7 @@ const StyledFooter = styled.div`
     font-size: 1.125rem;
     z-index: 2;
     .today-button{
+        padding: 5px;
         width: 91px;
         height: 91px;
         background-color: rgba(82, 182, 255, 1);
@@ -38,6 +58,9 @@ const StyledFooter = styled.div`
         transform: translate(0, -25%);
         color: white;
         position: relative;
+        p {
+            position: absolute;
+        }
         img{
             position: absolute;
             top: 0;
